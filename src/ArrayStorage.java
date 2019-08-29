@@ -9,7 +9,7 @@ public class ArrayStorage {
 
     private int counter = 0;
 
-    Resume[] storage = new Resume[10];
+    Resume[] storage = new Resume[10000];
 
     void clear() {
         for (int i = 0; i < counter; i++) {
@@ -38,9 +38,10 @@ public class ArrayStorage {
     void delete(String uuid) {
         for (int i = 0; i < counter; i++) {
             if ((storage[i].uuid).equals(uuid)) {
-                (storage[i].uuid).equals(null);
-                counter--;
+                storage[counter] = storage[i];
+                storage[counter] = null;
                 System.arraycopy(storage, i + 1, storage, i, counter - i);
+                counter--;
             }
         }
     }
@@ -53,12 +54,7 @@ public class ArrayStorage {
     }
 
     int size() {
-        int j = 0;
-        for (Resume r : storage) {
-            if (r != null) {
-                j++;
-            }
-        }
-        return j;
+
+        return counter;
     }
 }
