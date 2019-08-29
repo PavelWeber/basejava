@@ -38,10 +38,8 @@ public class ArrayStorage {
     void delete(String uuid) {
         for (int i = 0; i < counter; i++) {
             if ((storage[i].uuid).equals(uuid)) {
-                storage[counter] = storage[i];
-                storage[counter] = null;
-                System.arraycopy(storage, i + 1, storage, i, counter - i);
                 counter--;
+                System.arraycopy(storage, i + 1, storage, i, counter - i);
             }
         }
     }
